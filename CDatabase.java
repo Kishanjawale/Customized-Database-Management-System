@@ -197,6 +197,10 @@ class DBMS
             }
             else if(QuerySize == 4)
             {
+                /*
+                    * Query : select * from student
+                    * Description: This query is used to display all the records present in the student table.
+                    */
                 if("select".equals(tokens[0]) ||"Select".equals(tokens[0]))
                 {
                     if("*".equals(tokens[1]))
@@ -230,6 +234,10 @@ class DBMS
             }
             else if(QuerySize == 5)
             {   
+                /*
+                    * Query : select AVG (salary) from student
+                    * Description: This query is used to display the average of the salaries from all records.
+                    */
                 if("select".equals(tokens[0]) ||"Select".equals(tokens[0]))
                 {
                     if("average".equals(tokens[1])||"AVG".equals(tokens[1]))
@@ -257,6 +265,10 @@ class DBMS
                             System.out.println("Invalid Query ...'(salary)'  is expected at token number 2");
                         }
                     }
+                    /*
+                    * Query : select MAX (salary) from student
+                    * Description: This query is used to display the record  of student having maximum salary.
+                    */
                     else if("MAX".equals(tokens[1]))
                     {
                         if("(salary)".equals(tokens[2]) || "(Salary)".equals(tokens[2]))
@@ -282,6 +294,10 @@ class DBMS
                             System.out.println("Invalid Query ...'(salary)'  is expected at token number 2");
                         }
                     }
+                    /*
+                    * Query : select SUM (salary) from student
+                    * Description: This query is used to display summation of salary of all records.
+                    */
                     else if("sum".equals(tokens[1])||"SUM".equals(tokens[1]))
                     {
                         if("(salary)".equals(tokens[2]) || "(Salary)".equals(tokens[2]))
@@ -307,6 +323,10 @@ class DBMS
                             System.out.println("Invalid Query ...'(salary)'  is expected at token number 2");
                         }
                     }
+                    /*
+                    * Query : select MIN (salary) from student
+                    * Description: This query is used to display the record  of student having minumum salary
+                    */
                     else if("minimum".equals(tokens[1])||"MIN".equals(tokens[1]))
                     {
                         if("(salary)".equals(tokens[2]) || "(Salary)".equals(tokens[2]))
@@ -334,17 +354,20 @@ class DBMS
                     }
                     else
                     {
-                        System.out.println("Invalid Query");
+                        System.out.println("Invalid Query ...'MAX' or 'MIN' or 'SUM' or 'AVG'  is expected at token number 1");
                     }
                 }
                 else
                 {
-                    System.out.println("Invalid Query");
+                    System.out.println("Invalid Query....'select' statement is expexted at token number 0");
                 }
             }
             else if(QuerySize == 6)
             {
-                // Insert into student Piyush 1000 Pune;
+                /*
+                 * Query : Insert into student 'name(string)' 'salary(integer)' 'City_name (string)'
+                 * Description: This query is used to insert data into database
+                 */
                 if("Insert".equals(tokens[0]))
                 {
                     if("into".equals(tokens[1]))
@@ -356,21 +379,25 @@ class DBMS
                         }
                         else
                         {
-                            System.out.println(" Invalid Query...");   
+                            System.out.println("Invalid Table name.. 'student' expected at token number 2");   
                         }
                     }
                     else
                     {
-                        System.out.println(" Invalid Query...");
+                        System.out.println("Invalid Query...'into' expected at token number 1");
                     }
                 }
                 else
                 {
-                    System.out.println(" Invalid Query...");
+                    System.out.println("Invalid Query...'Insert' expected at token number 0");
                 }
             }
             else if(QuerySize == 8)
             {
+                /*
+                    * Query :select  * from student where RID = 'RID(Integer)' 
+                    * Description: This query is used to display record of student with specific id 
+                */   
                 if("select".equals(tokens[0]) ||"Select".equals(tokens[0]))
                 {
                     if("*".equals(tokens[1]))
@@ -385,7 +412,7 @@ class DBMS
                                 }
                                 else
                                 {
-                                    System.out.println("Invalid Query");         
+                                    System.out.println("Invalid Query...'=' expected at token number 6");       
                                 }
                             }
                             else if("Name".equals(tokens[5]) ||"name".equals(tokens[5]))
@@ -396,7 +423,7 @@ class DBMS
                                 }
                                 else
                                 {
-                                    System.out.println("Invalid Query");
+                                    System.out.println("Invalid Query...'=' expected at token number 6");
                                 }
                             }
                             else if("Salary".equals(tokens[5])||"salary".equals(tokens[5]))
@@ -429,13 +456,13 @@ class DBMS
                                 }
                                 else
                                 {
-                                    System.out.println("Invalid Query");
+                                    System.out.println("Invalid Query...'=' expected at token number 6");
                                 }
                             }
                         }
                         else
                         {
-                            System.out.println("Invalid Query");
+                            System.out.println("Invalid Query...'from' expected at token number 2");
                         }
                     }
                     else
@@ -542,22 +569,22 @@ class DBMS
                                                 }
                                                 else
                                                 {
-                                                    System.out.println("Invalid Qurery.....Invalid RID or salary..");
+                                                    System.out.println("Invalid Query ...'='  is expected at token number 9");
                                                 }
                                             }
                                             else
                                             {
-                                                System.out.println("Incorrect syntax at token number 8. Expecting 'rid' or 'RID'");
+                                                System.out.println("Invalid Query ...'RID' or 'rid'  is expected at token number 8");
                                             }
                                         }
                                         else
                                         {
-                                            System.out.println("Invalid Query...");
+                                            System.out.println("Invalid Query ...'where'  is expected at token number 7");
                                         }
                                     }
                                     else
                                     {
-                                        System.out.println("Incorrect syntax at token number 5. Expecting '=' ");
+                                        System.out.println("Invalid Query ...'='  is expected at token number 5");
                                     }    
                                 }
                                 else if("name".equals(tokens[4])||"Name".equals(tokens[4]))
@@ -575,22 +602,22 @@ class DBMS
                                                 }
                                                 else
                                                 {
-                                                    System.out.println("Invalid Query..");
+                                                    System.out.println("Invalid Query ...'='  is expected at token number 9");
                                                 }
                                             }
                                             else
                                             {
-                                                System.out.println("Incorrect syntax at token number 8. Expecting 'rid' or 'RID'");                 
+                                                System.out.println("Invalid Query ...'RID' or 'rid'  is expected at token number 8");                 
                                             }
                                         }
                                         else
                                         {
-                                            System.out.println("Invalid Query1...");
+                                            System.out.println("Invalid Query ...'where'  is expected at token number 7");
                                         }
                                     }
                                     else
                                     {
-                                        System.out.println("Invalid Query2...");
+                                        System.out.println("Invalid Query ...'='  is expected at token number 5");
                                     }    
                                 }
                                 else if("City".equals(tokens[4])||"city".equals(tokens[4]))
@@ -608,32 +635,32 @@ class DBMS
                                                 }
                                                 else
                                                 {
-                                                    System.out.println("Invalid Query..");
+                                                    System.out.println("Invalid Query ...'='  is expected at token number 9");
                                                 }
                                             }
                                             else
                                             {
-                                                System.out.println("Incorrect syntax at token number 8. Expecting 'rid' or 'RID'");
+                                                System.out.println("Invalid Query ...'RID' 'rid'  is expected at token number 8");
                                             }
                                         }
                                         else
                                         {
-                                            System.out.println("Invalid Query...");
+                                            System.out.println("Invalid Query ...'where'  is expected at token number 7");
                                         }
                                     }
                                     else
                                     {
-                                        System.out.println("Invalid Query...");
+                                        System.out.println("Invalid Query ...'='  is expected at token number 5");
                                     }    
                                 }
                                 else
                                 {
-                                    System.out.println("Invalid Query...");
+                                    System.out.println("Invalid Query...  'salary' 'name ' 'city' is expected at token number 4 ");
                                 }
                             }
                             else
                             {
-                                System.out.println("Invalid Query2...");
+                                System.out.println("Invalid Query ...'set'  is expected at token number 3");
                             }  
                         }
                         else
@@ -836,7 +863,6 @@ class DBMS
 // Date               :     27/7/2022   
 **************************************************************
 */
-    
     public void AggregateMax()
     {
         int iMax=0;
@@ -937,7 +963,7 @@ class DBMS
 // Date               :     27/7/2022   
 **************************************************************
 */
-    
+
     public void UpdateSalarybyRID(int Rid,int Salary)
     {
         int Index=0;
@@ -948,7 +974,7 @@ class DBMS
         }
         Index++;
     }
-    
+
 /*
 **************************************************************
 // Function Name     :      UpdateNameByRid
@@ -959,7 +985,6 @@ class DBMS
 // Date               :     27/7/2022   
 **************************************************************
 */
-
     public void UpdateNameByRid(String name,int Rid)
     { int Index=0;
         for(Student sref:lobj)
@@ -983,7 +1008,7 @@ class DBMS
     
     public void UpdatCityeByRid(String cityname,int Rid)
     { int Index=0;
-        for(Student sref:lobj)
+        for(Student sref:lobj) 
         {
             sref.City=cityname;
             break;
