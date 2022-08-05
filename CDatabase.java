@@ -11,9 +11,11 @@
 //Import Statements
 **************************************************************
 */
+import java.io.IOException;
 import java.lang.*;
 import java.lang.management.LockInfo;
 import java.nio.channels.SelectableChannel;
+import java.time.temporal.TemporalAdjuster;
 import java.util.*;
 
 import javax.imageio.ImageIO;
@@ -75,10 +77,12 @@ class DBMS
         lobj = new LinkedList<>();
     }
 
-    public void StartDBMS()
+    public void StartDBMS() 
     {
         Scanner scanobj= new Scanner(System.in);
+        System.out.println("***************************************************************");
         System.out.println("Marvellous customised DBMS started succesfully....");
+        System.out.println("***************************************************************");
         String Query = "";
         while(true)
         {
@@ -100,11 +104,6 @@ class DBMS
                     System.out.println("---------------------------------------");
                     System.out.println("---------------------------------------");
 
-                    System.out.println("Terminate DBMS:");
-                    System.out.println("Exit");
-                    
-                    System.out.println("---------------------------------------");
-                    
                     System.out.println("Display All Data:");
                     System.out.println("select * from student");
                     
@@ -184,16 +183,28 @@ class DBMS
                     System.out.println("select SUM (Salary) from student");
                     
                     System.out.println("---------------------------------------");   
+                    System.out.println("Terminate DBMS:");
+                    System.out.println("Exit");
+                    System.out.println("---------------------------------------");
+                    
                 }
                 else if("Exit".equals(tokens[0])||"exit".equals(tokens[0])||"EXIT".equals(tokens[0]))
                 {
                     System.out.println("Thank you for using Marvellous DBMS");
                     break;
                 }
+               /* else if("clear".equals(tokens[0]))
+                {
+                    ClearScreen();
+                } */
+                else 
+                {
+                    System.out.println("Invalid Query...");
+                }
             }
             else if(QuerySize == 2)
             {
-                System.out.println("Invalid ...");
+                System.out.println("Invalid Query ...");
             }
             else if(QuerySize == 4)
             {
@@ -224,12 +235,12 @@ class DBMS
                     }
                     else if(tokens[1] != "*")
                     {
-                        System.out.println("ERROR: Please Enter * After  select");
+                        System.out.println("ERROR:Invalid Query... '*' expected at token number 1");
                     }
                 }
                 else
                 {
-                    System.out.println(" Invalid Token at index 0. Expecting 'select' ");
+                    System.out.println("Invalid Query...'select' expected at token number 0");
                 }
             }
             else if(QuerySize == 5)
@@ -252,8 +263,7 @@ class DBMS
                                 }
                                 else
                                 {
-                                    System.out.println("Invalid Table Name..");
-                                }
+                                    System.out.println("Invalid Table Name..'student' expected at token number 4");                                }
                             }
                             else
                             {
@@ -281,7 +291,7 @@ class DBMS
                                 }
                                 else
                                 {
-                                    System.out.println("Invalid Table Name..");
+                                    System.out.println("Invalid Table Name..'student' expected at token number 4");
                                 }
                             }
                             else
@@ -310,7 +320,7 @@ class DBMS
                                 }
                                 else
                                 {
-                                    System.out.println("Invalid Table Name..");
+                                    System.out.println("Invalid Table Name..'student' expected at token number 4");
                                 }
                             }
                             else
@@ -339,7 +349,7 @@ class DBMS
                                 }
                                 else
                                 {
-                                    System.out.println("Invalid Table Name..");
+                                    System.out.println("Invalid Table Name..'student' expected at token number 4");
                                 }
                             }
                             else
@@ -445,7 +455,7 @@ class DBMS
                                 }
                                 else
                                 {
-                                    System.out.println("Invalid Query");
+                                    System.out.println("Invalid Query...'=' expected at token number 6");
                                 }
                             }
                             else if("City".equals(tokens[5]) ||"city".equals(tokens[5]))
@@ -986,7 +996,8 @@ class DBMS
 **************************************************************
 */
     public void UpdateNameByRid(String name,int Rid)
-    { int Index=0;
+    { 
+        int Index=0;
         for(Student sref:lobj)
         {
             sref.Name=name;
@@ -1007,7 +1018,8 @@ class DBMS
 */
     
     public void UpdatCityeByRid(String cityname,int Rid)
-    { int Index=0;
+    { 
+        int Index=0;
         for(Student sref:lobj) 
         {
             sref.City=cityname;
@@ -1015,6 +1027,19 @@ class DBMS
         }
         Index++;
     }
+
+    
+    /*public void ClearScreen()
+    {
+        try
+        {
+            System.out.println("running query");
+            Runtime.getRuntime().exec("clear");
+            System.out.flush();
+        } catch (IOException ex)
+         {}
+        
+    }*/
 }
 
 class CDatabase
